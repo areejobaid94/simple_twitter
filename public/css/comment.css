@@ -1,0 +1,19 @@
+#add-comment-box{
+    height: 235px;
+    position: relative;
+    margin: 5% auto;
+    width: 600px;
+    background: #FFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#post-comment-box{
+    height: 145px;
+    position: relative;
+    margin: 5% auto;
+    width: 600px;
+    background: #FFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
