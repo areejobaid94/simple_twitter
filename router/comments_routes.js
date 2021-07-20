@@ -18,7 +18,7 @@ router.post('/:id', authentication, async (req, res) => {
     try {
       await db.query(
         'INSERT INTO comments (user_id , text, post_id) VALUES ($1,$2,$3) RETURNING *'
-        , [req.user.user_id, req.body.text,  req.params.id]);
+        , [req.user.id, req.body.text,  req.params.id]);
       res.status(201);
     } catch (error) {
       res.status(500).json({error: error.message});
