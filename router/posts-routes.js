@@ -6,8 +6,15 @@ const router = express.Router();
 /* get user's posts */
 router.get('/my_posts',authentication, async (req, res) => {
     try {
-      const userPosts = await db.query('SELECT posts.id as id, posts.text as text, users.username as username FROM posts inner join users on users.id = posts.user_id where user_id = ($1)',  [req.user.id]);
-      res.json({posts : userPosts.rows});
+      let output = {};
+       let posts = await db.query('SELECT posts.id as id, posts.text as text, users.username as username, posts.user_id as user_id FROM posts left join users on users.id = posts.user_id where posts.user_id = $1',  [req.user.id]);
+       output.posts = posts.rows;
+       for(let i = 0; i < output.posts.length; i++){
+        let comments = await db.query('SELECT * from comments where comments.post_id = $1', [output.posts[i].id]);
+        let likes = await db.query('SELECT * FROM likes where likes.post_id = $1',   [output.posts[i].id]);
+        output[output.posts[i].id] = [comments.rows,likes.rows];
+      }
+      res.json({output : output});
     } catch (error) {
       res.status(500).json({error: error.message});
     }
