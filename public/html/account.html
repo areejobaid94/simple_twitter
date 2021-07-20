@@ -74,9 +74,10 @@
         </main>
         <div id="add-post-box">            
             <div class="add_post">
-                <form id="update_profile">
+                <form id="add_post">
                     <h2>Add New Post</h2>
-                    <input type="text" id="add_post_input" name="Message" placeholder="Message" />
+                    <input type="text" id="add_post_input" name="message" placeholder="Message" required/>
+                    <p id = "add-post-status"></p> 
                     <input type="submit" name="add_post" value="Submit" />
                 </form>            
             </div>
@@ -84,22 +85,23 @@
         <div id="profile-box">
             <div class="left">
             <h1>My Profile</h1>
-            <p>UserName: </p>
-            <p>E-Mail: </p>
-            <p>Password: </p>
-            <a href="my_friends_posts.html"> <input type="button" value="My Posts" /></a>
-            <a href="my_posts.html"><input type="button" value="My Friends Posts" /></a> 
+            <span><p><b>UserName: </b></p><p id="username"></p></span>
+            <span><p><b>E-Mail: </b></p><p id="email"></p></span>
+            <a  href="my_Friends.html"> <input style="margin-top: 15px;" type="button" value="My Friends" /></a>
+            <a  href="my_posts.html"> <input style="margin-top: 9px;" type="button" value="My Posts" /></a>
+            <a href="my_friends_posts.html"><input style="margin-top: 9px;" type="button" value="My Friends Posts" /></a>        
+
             </div>
             
             <div class="right">
                 <form id="update_profile">
                     <h1>Update My Profile</h1>
-                    <input type="text" name="username" placeholder="Username" />
-                    <input type="email" name="email" placeholder="E-mail" />
-                    <input type="password" name="password" placeholder="Password" />   
-                    <p id = "signup-status"></p> 
+                    <input  type="text" name="username" id="username_update"  placeholder="Username" required/>
+                    <input type="email" name="email" id="email_update" placeholder="E-mail" required/>
+                    <input type="password" name="password" placeholder="Password" required/>   
+                    <p id = "update-status"></p> 
                     <input type="submit" name="signup_submit" value="Submit" />
-                </form>            
+                </form>     
             </div>
             <div></div>
         </div>      

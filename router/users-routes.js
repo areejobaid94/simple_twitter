@@ -44,7 +44,35 @@ router.delete('/', async (req,res)=>{
   } catch (error) {
     res.status(500).json({error: error.message});
   }
-})
+});
 
+/* get user profile data */
+router.get('/profile', authentication, async (req, res) => {
+  try {
+    const userProfile = await db.query(
+      ' Select * FROM users WHERE id=$1;'
+      , [req.user.id]);
+    res.json(userProfile.rows[0]);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+/* update user */
+router.put('/profile', authentication, async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    //update user data
+    const updateUser = await db.query(
+      'UPDATE users SET username = $1, password = $2, email = $3 WHERE id = $4 RETURNING *'
+      , [req.body.username, hashedPassword, req.body.email, req.user.id]);
+    // create the JWT token
+    let tokens = jwtTokens(updateUser.rows[0]);
+    // add tokens to the res
+    res.json({token: tokens.token, user: updateUser.rows[0]});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
 
 export default router;

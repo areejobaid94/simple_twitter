@@ -13,6 +13,10 @@ body {
   font-weight: 300;
 }
 
+span{
+  display: inline;
+}
+
 #profile-box {
   position: relative;
   margin: 5% auto;
