@@ -1,23 +1,23 @@
 "use strict"
 let api_url = '/api';
 var id = localStorage.getItem("post_id");
-let pageUrl = "http://localhost:4000/html/comments.html";
+let pageUrl = "http://localhost:4000/html/comment.html";
 const formAddComment = document.getElementById("add_comment");
 let aPStatus = document.getElementById("add-comment-status");
 
 window.onload = async function(){
     let post = await feshPost();
     if(post.error)console.log(post.error);
-    addPostData(post.post[0])
-    addAllComments(post.post)
+    postData(post.post[0])
+    allComments(post.post)
 }
 
-function addPostData(data){
+function postData(data){
   document.getElementById("username_post").textContent = data.username; 
   document.getElementById("text_post").textContent = data.text;
 }
 
-function addAllComments(comments){
+function allComments(comments){
   var commentTemp =document.getElementById("comment_temp"); 
   var cont = document.querySelector("#cont");
   for(let i =comments.length -1; i >= 0; i--){
@@ -25,8 +25,8 @@ function addAllComments(comments){
     let username = clone.querySelector(".comment_username");
     username.textContent = comments[i].username;
     let text = clone.querySelector(".comment_text");
-    text.textContent = comments[i].text;
-    cont.appendChild(clon);
+    text.textContent = comments[i].comment_text;
+    cont.appendChild(clone);
   }
 }
 
@@ -44,10 +44,11 @@ formAddComment.onsubmit = async e => {
       aPStatus.innerText = "Errrrrrroooooorrrrrrrrrrr";
       return;
     };
+    console.log("ok")
     window.location.href = pageUrl;
   }
   
-  async function addComment(data) {
+async function addComment(data) {
     let token = localStorage.getItem("token");
     return await fetch(`${api_url}/comments/${id}`, {
       method: 'Post',
@@ -59,4 +60,4 @@ formAddComment.onsubmit = async e => {
       },
       body: JSON.stringify(data)
     });
-  }
+}
