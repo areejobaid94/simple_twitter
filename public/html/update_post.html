@@ -30,6 +30,12 @@
     <!-- body -->
     <body>
         <main class="main-layout" id="cont">
+            <!-- loader  -->
+            <!-- <div class="loader_bg">
+                <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
+            </div> -->
+            <!-- end loader -->
+            <!-- header -->
             <header id="home">
                 <!-- header inner -->
                 <div class="header">
@@ -67,25 +73,14 @@
             <!-- end header -->
         <div id="add-post-box">            
             <div class="add_post">
-                <form id="add_post">
-                    <h2>Add New Post</h2>
+                <form id="update_post">
+                    <h2>Update Post</h2>
                     <input type="text" id="add_post_input" name="message" placeholder="Message" required/>
                     <p id = "add-post-status"></p> 
                     <input type="submit" name="add_post" value="Submit" />
                 </form>            
             </div>
         </div>       
-        <template id = "post_temp">
-            <div class="post-box">            
-                <div class="add_post">
-                    <h2 class="username">Username</h2>
-                    <p class="text">text</p>
-                    <input class="like" style="width: 127px;" type="button" name="like" value="Like" />
-                    <input style="width: 127px;" class = "dislike" type="button" name="dis-like" value="Dislike" />
-                    <input style="width: 127px;" class = "comments" type="button" name="comment" value="Comments" />
-                    <input style="width: 127px;" class = "update_p" type="button" name="update" value="Update" />
-                </div>
-        </template>  
     </main>
   
         <!-- footer -->
@@ -104,6 +99,6 @@
             </div>
         </footer>
         <!-- end footer -->
-        <script src="../js/my_posts.js"></script>     
+        <script src="../js/update_post.js"></script>     
     </body>
 </html>

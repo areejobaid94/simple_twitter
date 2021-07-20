@@ -49,10 +49,10 @@ router.post('/', authentication, async (req, res) => {
 /* update post */
 router.put('/:id', authentication, async (req, res) => {
     try {
-      const updatePost = await db.query(
+      await db.query(
         'UPDATE posts SET user_id = $1, text = $2 WHERE id = $3 RETURNING *'
-        , [req.user.user_id, req.body.text, req.params.id]);
-      res.json({post : updatePost.rows[0]}) 
+        , [req.user.id, req.body.text, req.params.id]);
+      res.json("done") 
       res.status(201);
     } catch (error) {
       res.status(500).json({error: error.message});
