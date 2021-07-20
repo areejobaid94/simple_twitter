@@ -18,29 +18,27 @@ formLogin.onsubmit = async e => {
       pStatus.innerText = loginDetails.error;
       return;
     }
-    accessToken = loginDetails.accessToken;
-    window.localStorage.setItem(tokens, accessToken);
+    accessToken = loginDetails.token;
+    pStatus.innerText = "";
+    localStorage.setItem("token", accessToken);
     window.location.href = pageUrl;
-
-    // const jwtDecoded = jwtDecode(accessToken);
 }
 
 formSignup.onsubmit = async e => {
   e.preventDefault();
-  console.log(formLogin.email.value);
   const loginDetails = await SignUp({ email: formSignup.email.value, password: formSignup.password.value, username:formSignup.username.value });
-  console.log(loginDetails);
   if (loginDetails.error) {
     pStatusSignUp.innerText = loginDetails.error;
     return;
   }
-  accessToken = loginDetails.accessToken;
-  window.localStorage.setItem(tokens, accessToken);
+  accessToken = loginDetails.token;
+
+  pStatusSignUp.innerText = "";
+  localStorage.setItem("token", accessToken);
   window.location.href = pageUrl;
-  // const jwtDecoded = jwtDecode(accessToken);
 }
+
 async function login(data) {
-    //console.log(JSON.stringify(data));
     console.log(data);
     const res = await fetch(`${api_url}/auth/login`, {
       method: 'POST',

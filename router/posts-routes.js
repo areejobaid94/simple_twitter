@@ -6,9 +6,15 @@ const router = express.Router();
 /* get user's posts */
 router.get('/my_posts',authentication, async (req, res) => {
     try {
-        
-      const userPosts = await db.query('SELECT * FROM posts where user_id = ($1)',  [req.user.user_id]);
-      res.json({posts : userPosts.rows});
+      let output = {};
+       let posts = await db.query('SELECT posts.id as id, posts.text as text, users.username as username, posts.user_id as user_id FROM posts left join users on users.id = posts.user_id where posts.user_id = $1',  [req.user.id]);
+       output.posts = posts.rows;
+       for(let i = 0; i < output.posts.length; i++){
+        let comments = await db.query('SELECT * from comments where comments.post_id = $1', [output.posts[i].id]);
+        let likes = await db.query('SELECT * FROM likes where likes.post_id = $1',   [output.posts[i].id]);
+        output[output.posts[i].id] = [comments.rows,likes.rows];
+      }
+      res.json({output : output});
     } catch (error) {
       res.status(500).json({error: error.message});
     }
@@ -29,11 +35,11 @@ router.get('/my_friends_posts',authentication, async (req, res) => {
 /* add post */
 router.post('/', authentication, async (req, res) => {
     try {
-      const newPost = await db.query(
-        'INSERT INTO posts (user_id , text ) VALUES ($1,$2) RETURNING *'
-        , [req.user.user_id, req.body.text]);
+      let post =  await db.query(
+        'INSERT INTO posts (user_id , text ) VALUES ($1,$2)'
+        , [req.user.id, req.body.text]);
           
-      res.status(201);
+      res.status(201).json(post.rows[0]);
     } catch (error) {
       res.status(500).json({error: error.message});
     }

@@ -147,7 +147,7 @@ input[type="button"]:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-#post-box{
+.post-box{
     height: 216px;
     position: relative;
     margin: 5% auto;
