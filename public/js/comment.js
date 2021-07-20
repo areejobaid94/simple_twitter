@@ -7,9 +7,27 @@ let aPStatus = document.getElementById("add-comment-status");
 
 window.onload = async function(){
     let post = await feshPost();
-    console.log(post);
-    document.getElementById("username_post").textContent = post.post.username; 
-    document.getElementById("text_post").textContent = post.post.text;
+    if(post.error)console.log(post.error);
+    addPostData(post.post[0])
+    addAllComments(post.post)
+}
+
+function addPostData(data){
+  document.getElementById("username_post").textContent = data.username; 
+  document.getElementById("text_post").textContent = data.text;
+}
+
+function addAllComments(comments){
+  var commentTemp =document.getElementById("comment_temp"); 
+  var cont = document.querySelector("#cont");
+  for(let i =comments.length -1; i >= 0; i--){
+    let clone = commentTemp.content.cloneNode(true);
+    let username = clone.querySelector(".comment_username");
+    username.textContent = comments[i].username;
+    let text = clone.querySelector(".comment_text");
+    text.textContent = comments[i].text;
+    cont.appendChild(clon);
+  }
 }
 
 async function feshPost() {
