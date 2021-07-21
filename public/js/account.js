@@ -27,7 +27,7 @@ window.onload = async function(){
       document.getElementById("logout").style.display = "inline-block";
   }
 
-    const user = await fetchUserData(token);
+    const user = await fetchUserData();
     console.log(user);    
     document.getElementById("username").innerHTML = user.username;
     document.getElementById("email").innerHTML = user.email;
@@ -42,6 +42,7 @@ function logout(){
 
 
 async function fetchUserData() {
+    let token = localStorage.getItem("token");
     const res = await fetch(`${api_url}/users/profile`, {
       headers: {
         'Authorization': 'Bearer ' + token,

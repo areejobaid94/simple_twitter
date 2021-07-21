@@ -29,7 +29,7 @@ window.onload = async function(){
       document.getElementById("logout").style.display = "inline-block";
   }
 
-  const user = await fetchUserData(token);
+  const user = await fetchUserData();
 
     posts = await feshFriendsPosts();
     var postTemp =document.getElementById("post_temp"); 
@@ -214,7 +214,8 @@ function logout(){
   window.location.href = pageUrlHome;
 };
 
-async function fetchUserData(token) {
+async function fetchUserData() {
+  let token = localStorage.getItem("token");
   const res = await fetch(`${api_url}/users/profile`, {
     headers: {
       'Authorization': 'Bearer ' + token,
