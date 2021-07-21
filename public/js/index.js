@@ -1,4 +1,6 @@
 "use strict"
+let formSendEmail = document.getElementById("send_email_form");
+let api_url = '/api';
 
 window.onload = async function(){
     let token = localStorage.getItem("token");
@@ -19,3 +21,26 @@ window.onload = async function(){
         document.getElementById("start").style.display = "none";   
     }
 }
+
+formSendEmail.onsubmit = async e => {
+    e.preventDefault();
+    let res = await sendEmail({ name: formSendEmail.name.value, message: formSendEmail.message.value, subject: formSendEmail.subject.value});
+    if(res.error){
+       console.log(res.error); 
+       return;
+    };
+    console.log("ok");
+}
+
+
+async function sendEmail(data) {
+    return await fetch(`${api_url}/send_email/`, {
+      method: 'Post',
+      credentials:'include',
+      cache:'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+};

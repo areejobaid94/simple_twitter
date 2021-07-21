@@ -125,19 +125,19 @@
                                 <h2>Send a <strong class="theme_blue">direct e-mail to the owner</strong></h2>
                             </div>
                             <div class="full margin_top_20">
-                                <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                       <input class="form-control" placeholder="Your Name" type="text" required="">
+                                <form id = "send_email_form">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                        <input class="form-control" name = "name" placeholder="Your Name" type="text" required="">
+                                        </div>
+                                        <div class="col-sm-12">
+                                        <input class="form-control" name = "subject" placeholder="Subject" type="text" required="">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control textarea" name = "message" placeholder="Message" required=""></textarea>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                       <input class="form-control" placeholder="Subject" type="text" required="">
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <textarea class="form-control textarea" placeholder="Message" required=""></textarea>
-                                    </div>
-                                </div>
-                                <button class="main_bt">Send</button>
+                                    <input type="submit" class="main_bt" value = "Send" >
                             </form>
                             </div>   
                             
