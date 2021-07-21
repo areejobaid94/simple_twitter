@@ -1,10 +1,11 @@
 "use strict"
-let api_url = '/api';
+let api_url = 'https://simple-twitter-new.herokuap/api';
 var id = localStorage.getItem("post_id");
 const formUpdatePost = document.getElementById("update_post");
 let aPStatus = document.getElementById("update-post-status");
-let pageUrl = "http://localhost:4000/html/my_posts.html";
-let pageUrlHome = "http://localhost:4000/";
+let pageUrl = "https://simple-twitter-new.herokuap/my_posts.html";
+let pageUrlHome = "https://simple-twitter-new.herokuap/";
+
 window.onload = async function(){
   let token = localStorage.getItem("token");
   if(!token){

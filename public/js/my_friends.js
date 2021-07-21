@@ -1,9 +1,9 @@
 "use strict"
-let api_url = '/api';
-let pageUrl = "http://localhost:4000/html/search_user.html";
+let api_url = 'https://simple-twitter-new.herokuap/api';
+let pageUrl = "https://simple-twitter-new.herokuap/html/search_user.html";
 var userTemp =document.getElementById("user_temp"); 
 var cont = document.querySelector("#cont");
-let pageUrlHome = "http://localhost:4000/";
+let pageUrlHome = "https://simple-twitter-new.herokuap/";
 
 window.onload = async function(){
   let token = localStorage.getItem("token");
