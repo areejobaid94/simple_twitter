@@ -4,20 +4,13 @@ const pStatus = document.getElementById("login-status");
 const formSignup = document.getElementById("form-signup");
 const pStatusSignUp = document.getElementById("signup-status");
 let accessToken = '';
-let pageUrl = "http://localhost:4000/html/account.html";
-
-//let api_url = 'https://jwt-pg-morganpage-tech.herokuapp.com/api';
-let api_url = '/api';
-
-// let pageUrl = "https://simple-twitter-new.herokuap/html/account.html";
-// let pageUrlHome = "https://simple-twitter-new.herokuap/";
-// let api_url = 'https://simple-twitter-new.herokuap/api';
-// let accessToken = '';
+// let pageUrl = "http://localhost:4000/html/account.html";
+// let api_url = '/api';
 // let pageUrl = "http://localhost:4000/html/account.html";
 
-// let pageUrl = "https://simple-twitter-new.herokuap/html/account.html";
-// let pageUrlHome = "https://simple-twitter-new.herokuap/";
-// let api_url = 'https://simple-twitter-new.herokuapp.com/api';
+let pageUrl = "https://simple-twitter-new.herokuap/html/account.html";
+let pageUrlHome = "https://simple-twitter-new.herokuap/";
+let api_url = 'https://simple-twitter-new.herokuapp.com/api';
 
 window.onload = async function(){
   let token = localStorage.getItem("token");
