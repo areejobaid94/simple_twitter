@@ -5,6 +5,7 @@ import authRouter from './router/auth-routes.js';
 import postsRouter from './router/posts-routes.js';
 import commentsRouter from './router/comments_routes.js';
 import likesRouter from './router/likes_routes.js';
+import followRoutes from './router/follow_routes.js';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { dirname,join } from 'path';
@@ -28,6 +29,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/likes', likesRouter);
+app.use('/api/follow', followRoutes);
 
 
 app.listen(PORT, ()=> {

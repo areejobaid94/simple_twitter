@@ -29,13 +29,7 @@
     </head>
     <!-- body -->
     <body>
-        <main class="main-layout">
-            <!-- loader  -->
-            <!-- <div class="loader_bg">
-                <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
-            </div> -->
-            <!-- end loader -->
-            <!-- header -->
+        <main class="main-layout" id="cont">
             <header id="home">
                 <!-- header inner -->
                 <div class="header">
@@ -71,26 +65,28 @@
                 <!-- end header inner -->
             </header>
             <!-- end header -->
-        </main>
         <div id="add-post-box">            
             <div class="add_post">
-                <form id="update_profile">
+                <form id="add_post">
                     <h2>Add New Post</h2>
-                    <input type="text" id="add_post_input" name="Message" placeholder="Message" />
+                    <input type="text" id="add_post_input" name="message" placeholder="Message" required/>
+                    <p id = "add-post-status"></p> 
                     <input type="submit" name="add_post" value="Submit" />
                 </form>            
             </div>
-        </div>      
-        <div id="post-box">            
-            <div class="add_post">
-                <h2>Username</h2>
-                <p>text</p>
-                <input style="width: 170px;" type="button" name="like" value="Like" />
-                <input style="width: 170px;" type="button" name="dis-like" value="Dislike" />
-                <input style="width: 170px;" type="button" name="comment" value="Comments" />
-            </div>
-        </div>      
-        </div>      
+        </div>       
+        <template id = "post_temp">
+            <div class="post-box">            
+                <div class="add_post">
+                    <h2 class="username">Username</h2>
+                    <p class="text">text</p>
+                    <input class="like" style="width: 170px;" type="button" name="like" value="Like" />
+                    <input style="width: 170px;" class = "dislike" type="button" name="dis-like" value="Dislike" />
+                    <input style="width: 170px;" class = "comments" type="button" name="comment" value="Comments" />
+                </div>
+        </template>  
+    </main>
+  
         <!-- footer -->
         <footer>
             <div class="footer layout_padding">
@@ -107,6 +103,6 @@
             </div>
         </footer>
         <!-- end footer -->
-        <script src="../js/my_posts.js"></script>     
+        <script src="../js/my_friends_posts.js"></script>     
     </body>
 </html>

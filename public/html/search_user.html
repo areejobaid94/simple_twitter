@@ -30,11 +30,6 @@
     <!-- body -->
     <body>
         <main class="main-layout">
-            <!-- loader  -->
-            <!-- <div class="loader_bg">
-                <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
-            </div> -->
-            <!-- end loader -->
             <!-- header -->
             <header id="home">
                 <!-- header inner -->
@@ -71,7 +66,6 @@
                 <!-- end header inner -->
             </header>
             <!-- end header -->
-        </main>
         <div id="update-post-box">            
             <div class="update_post">
                 <form id="search_user">
@@ -81,13 +75,16 @@
                 </form>            
             </div>
         </div>   
-        <div id="user-box">            
-            <div class="add_post">
-                <h2>Username</h2>
-                <input style="width: 257px;" type="button" name="follow" value="Follow" />
-            </div>
-        </div>         
-        </div>      
+        <template id = "search_user_temp">
+            <div id="user-box">            
+                <div class="add_post">
+                    <h2 class = "username">Username</h2>
+                    <input  class = "follow" style="width: 257px;" type="button" name="follow" value="Follow" />
+                </div>
+            </div>         
+        </template>
+        <div id = "cont"></div> 
+    </main>
         <!-- footer -->
         <footer>
             <div class="footer layout_padding">

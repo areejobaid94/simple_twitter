@@ -46,6 +46,30 @@ router.delete('/', async (req,res)=>{
   }
 });
 
+/* get search users */
+router.get('/search',authentication, async (req, res) => {
+  try {
+    console.log(req.query.username,req.user.id);
+    let username ="%"+ req.query.username +"%";
+    let notfollowed = await db.query(`SELECT users.username as username, users.id as id FROM users full outer  join followers  on followers.user_id = users.id where ( followers.follower_id != $2 or followers.follower_id is null) and users.id != $2 and users.username like $1`,[username,req.user.id]);
+    let followed = await db.query(`SELECT users.username as username, users.id as id FROM users inner  join followers  on followers.user_id = users.id where  followers.follower_id = $2 and users.username like $1`,[username,req.user.id]);
+    res.json({followed : followed.rows, notfollowed: notfollowed.rows});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+/* get my friends  */
+router.get('/my_friends',authentication, async (req, res) => {
+  try {
+    console.log(req.user.id);
+    let friends = await db.query(`SELECT users.username as username, users.id as id FROM users inner  join followers  on followers.user_id = users.id where  followers.follower_id = $1`,[req.user.id]);
+    res.json({friends: friends.rows});
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
 /* get user profile data */
 router.get('/profile', authentication, async (req, res) => {
   try {

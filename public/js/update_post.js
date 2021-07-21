@@ -13,9 +13,6 @@ window.onload = async function(){
 
 function postData(data){
   document.getElementById("add_post_input").value = data;
-
-    // document.getElementById("username_post").textContent = data.username; 
-    // document.getElementById("text_post").textContent = data.text;
 };
 
 async function feshPost() {

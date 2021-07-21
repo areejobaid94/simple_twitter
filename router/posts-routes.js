@@ -24,8 +24,15 @@ router.get('/my_posts',authentication, async (req, res) => {
 /* get user's friends posts */
 router.get('/my_friends_posts',authentication, async (req, res) => {
     try {
-      const friends_posts = await db.query('SELECT * FROM followers inner join posts on posts.user_id = followers.user_id  where followers.follower_id = $1',  [req.user.user_id]);
-      res.json({posts : friends_posts.rows});
+      let output = {};
+      const friends_posts = await db.query('SELECT * FROM followers inner join posts on posts.user_id = followers.user_id  where followers.follower_id = $1',  [req.user.id]);
+      output.posts = friends_posts.rows;
+      for(let i = 0; i < output.posts.length; i++){
+        let comments = await db.query('SELECT * from comments where comments.post_id = $1', [output.posts[i].id]);
+        let likes = await db.query('SELECT * FROM likes where likes.post_id = $1',   [output.posts[i].id]);
+        output[output.posts[i].id] = [comments.rows,likes.rows];
+      }
+      res.json({output : output});
     } catch (error) {
       res.status(500).json({error: error.message});
     }
@@ -35,10 +42,24 @@ router.get('/my_friends_posts',authentication, async (req, res) => {
 /* add post */
 router.post('/', authentication, async (req, res) => {
     try {
+      let tags = req.body.text.split("#");
+      console.log(tags);
       let post =  await db.query(
-        'INSERT INTO posts (user_id , text ) VALUES ($1,$2)'
+        'INSERT INTO posts (user_id , text ) VALUES ($1,$2) RETURNING *'
         , [req.user.id, req.body.text]);
-          
+      for(let i = 1; i < tags.length; i++){
+        var tagValue = tags[i].split(" ")[0];
+        console.log(tagValue);
+        var tagValueFromDb = await db.query(
+          'Select * from tags where tag_value = $1'
+          , [tagValue]);
+        if(tagValueFromDb.rows.length == 0){
+          tagValueFromDb =  await db.query(
+          'INSERT INTO tags (tag_value) VALUES ($1) RETURNING *',[tagValue]);
+        }
+        await db.query(
+          'INSERT INTO tags_posts (post_id, tag_id) VALUES ($1, $2) RETURNING *',[post.rows[0].id, tagValueFromDb.rows[0].id]);
+      }
       res.status(201).json(post.rows[0]);
     } catch (error) {
       res.status(500).json({error: error.message});
