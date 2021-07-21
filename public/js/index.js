@@ -1,6 +1,7 @@
 "use strict"
 let formSendEmail = document.getElementById("send_email_form");
 let api_url = '/api';
+let pageUrlHome = "http://localhost:4000/";
 
 window.onload = async function(){
     let token = localStorage.getItem("token");
@@ -11,15 +12,16 @@ window.onload = async function(){
         document.getElementById("my_Friends").style.display = "none";
         document.getElementById("search_user").style.display = "none";
         document.getElementById("start").style.display = "inline-block";
-        
-    }else{
-        document.getElementById("account").style.display = "inline-block";
-        document.getElementById("my_posts").style.display = "inline-block";
-        document.getElementById("my_friends_posts").style.display = "inline-block";
-        document.getElementById("my_Friends").style.display = "inline-block";
-        document.getElementById("search_user").style.display = "inline-block";
-        document.getElementById("start").style.display = "none";   
-    }
+        document.getElementById("logout").style.display = "none";
+      }else{
+          document.getElementById("account").style.display = "inline-block";
+          document.getElementById("my_posts").style.display = "inline-block";
+          document.getElementById("my_friends_posts").style.display = "inline-block";
+          document.getElementById("my_Friends").style.display = "inline-block";
+          document.getElementById("search_user").style.display = "inline-block";
+          document.getElementById("start").style.display = "none";   
+          document.getElementById("logout").style.display = "inline-block";
+      }
 }
 
 formSendEmail.onsubmit = async e => {
@@ -43,4 +45,10 @@ async function sendEmail(data) {
       },
       body: JSON.stringify(data)
     });
+};
+
+
+function logout(){
+    localStorage.removeItem('token');
+    window.location.href = pageUrlHome;
 };
