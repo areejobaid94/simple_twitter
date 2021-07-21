@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
       });
       var mailOptions = {
         from: 'emergency.app987@gmail.com',
-        to: "areej.obaid@yahoo.com",
+        to: "areej.obaid17894@gmail.com",
         subject: req.body.name + " " + req.body.subject,
         text: req.body.message,
       };
