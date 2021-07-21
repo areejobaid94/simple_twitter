@@ -32,28 +32,34 @@
         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
     </div>
     <!-- end loader -->
-    <!-- header -->
-    <header id="home">
+
+      <!-- header -->
+      <header id="home">
         <!-- header inner -->
         <div class="header">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div style="flex: 0 0 10%;max-width: 10%;" class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo"> <a href="index.html"><img id = "logo_img" src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-articleLarge-v4.jpg?quality=75&auto=webp&disable=upscale" alt="#"></a> </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <div style="flex: 0 0 90%;max-width: 90%;" class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                         <div class="menu-area">
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                        <li class="active"><a href="#home">Home</a></li>
-                                        <li><a href="#about">About The Owner</a></li>
-                                        <li><a href="html/start.html">Get Start</a></li>
-                                        <li><a href="#contact">Contact Us</a></li>
+                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li id = "start"><a href="html/start.html">Start</a></li>
+                                        <li><a id = "account" href="html/account.html">My Account</a></li>
+                                        <li><a id = "my_posts" href="html/my_posts.html">My Posts</a></li>
+                                        <li> <a id = "my_friends_posts" href="html/my_friends_posts.html">My Friends Posts</a></li>
+                                        <li><a id = "my_Friends" href="html/my_Friends.html">My Friends</a></li>
+                                        <li> <a id = "search_user" href="html/search_user.html">Search For User</a></li>
+                                        <li><a href="html/trending.html">Trending</a></li>
+                                        <li><a href="index.html#contact">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -139,11 +145,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-                
     </div>
     <!-- end section -->
 
@@ -173,6 +174,7 @@
     <!-- sidebar -->
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
