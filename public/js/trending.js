@@ -44,7 +44,7 @@ function logout(){
 
 function appendRes(data){
     cont.innerHTML = "";
-    for(let i = data.length -1; i >= 0; i--){
+    for(let i = 0; i < data.length; i++){
       addContent(data[i]);
     };
 }
