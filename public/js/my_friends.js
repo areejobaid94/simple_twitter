@@ -1,36 +1,24 @@
 "use strict"
 let api_url = '/api';
-const formSearchUser = document.getElementById("search_user");
 let pageUrl = "http://localhost:4000/html/search_user.html";
-var searchTemp =document.getElementById("search_user_temp"); 
+var userTemp =document.getElementById("user_temp"); 
 var cont = document.querySelector("#cont");
 
-formSearchUser.onsubmit = async e => {
-    e.preventDefault();
-    let res = await search(formSearchUser.username.value);
-    console.log(res);
-    if(res.error){
-      aPStatus.innerText = "Errrrrrroooooorrrrrrrrrrr";
-      return;
-    };
-    appendRes(res);
-};  
-
+window.onload = async function(){
+    let users = await search();
+    appendRes(users.friends);
+}
 
 function appendRes(data){
   cont.innerHTML = "";
-  for(let i = data.followed.length -1; i >= 0; i--){
-    addContent(true,data.followed[i]);
-  }
-
-  for(let i = data.notfollowed.length -1; i >= 0; i--){
-    addContent(false,data.notfollowed[i]);
-  }
+  for(let i = data.length -1; i >= 0; i--){
+    addContent(data[i]);
+  };
 }
 
-async function search(username) {
+async function search() {
   let token = localStorage.getItem("token");
-  let res = await fetch(`${api_url}/users/search?username=${username}`, {
+  let res = await fetch(`${api_url}/users/my_friends`, {
       method: 'Get',
       credentials:'include',
       cache:'no-cache',
@@ -57,8 +45,8 @@ async function followAndUnfollowUser(id,method){
   return await res.json();
 }
 
-function addContent(is_follow, data){
-    let clone = searchTemp.content.cloneNode(true);
+function addContent(data){
+    let clone = userTemp.content.cloneNode(true);
     let username = clone.querySelector(".username");
     let follow = clone.querySelector(".follow");
     follow.id = data.id;
@@ -72,7 +60,6 @@ function addContent(is_follow, data){
           follow.value = "unfollow"
         }
     });
-    if(is_follow)follow.value = "Unfollow"
     username.innerText = data.username;
     cont.appendChild(clone);
 };

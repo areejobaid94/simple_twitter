@@ -15,7 +15,7 @@ CREATE TABLE posts(
 
 CREATE TABLE tags(
   id SERIAL PRIMARY KEY,
-  value TEXT NOT NULL
+  tag_value TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE tags_posts(

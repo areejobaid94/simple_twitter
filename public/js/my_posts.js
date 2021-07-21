@@ -3,6 +3,8 @@ let api_url = '/api';
 let aPStatus = document.getElementById("add-post-status");
 const formAddPast = document.getElementById("add_post");
 let pageUrl = "http://localhost:4000/html/my_posts.html";
+let pageUrlComments = "http://localhost:4000/html/comment.html";
+let pageUrlUpdate = "http://localhost:4000/html/update_post.html";
 let posts = {};
 
 window.onload = async function(){
@@ -66,7 +68,8 @@ window.onload = async function(){
       comments.id = posts.output.posts[i].id;
       comments.value = `${posts.output[posts.output.posts[i].id][0].length} Comments`
       comments.addEventListener("click", function(e) {
-        console.log(this.id);
+        localStorage.setItem("post_id",this.id);
+        window.location.href = pageUrlComments;
       });
 
       disLike.id = `dislike_${posts.output.posts[i].id}`;
@@ -98,9 +101,11 @@ window.onload = async function(){
         }
       });
 
-      update.id = posts.output.posts[i].id;
+      update.id = `update_${posts.output.posts[i].id}`;
       update.addEventListener("click", function(e) {
-        console.log(this.id);
+        let id = this.id.split("_")[1];
+        localStorage.setItem("post_id",id);
+        window.location.href = pageUrlUpdate;      
       });
 
       text.textContent = posts.output.posts[i].text;
@@ -109,7 +114,6 @@ window.onload = async function(){
     }   
     
 };
-
 
 async function feshMyPosts() {
     let token = localStorage.getItem("token");
@@ -120,7 +124,6 @@ async function feshMyPosts() {
     });
     return await res.json();
 }
-
 
 formAddPast.onsubmit = async e => {
   e.preventDefault();

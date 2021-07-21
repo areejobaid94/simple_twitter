@@ -24,12 +24,17 @@
         <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
         <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:400,300,500"> 
-        <link rel="stylesheet" href="../css/posts.css">
-        <link rel="stylesheet" href="../css/search_user.css">
+        <link rel="stylesheet" href="../css/posts.css"> 
+
     </head>
     <!-- body -->
     <body>
-        <main class="main-layout">
+        <main class="main-layout" id="cont">
+            <!-- loader  -->
+            <!-- <div class="loader_bg">
+                <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
+            </div> -->
+            <!-- end loader -->
             <!-- header -->
             <header id="home">
                 <!-- header inner -->
@@ -66,25 +71,18 @@
                 <!-- end header inner -->
             </header>
             <!-- end header -->
-        <div id="update-post-box">            
-            <div class="update_post">
-                <form id="search_user">
-                    <h2>Search For User By Name</h2>
-                    <input type="text" id="add_post_input" name="username" placeholder="username" />
-                    <input type="submit" name="search" value="Search" />
+        <div id="add-post-box">            
+            <div class="add_post">
+                <form id="update_post">
+                    <h2>Update Post</h2>
+                    <input type="text" id="add_post_input" name="message" placeholder="Message" required/>
+                    <p id = "add-post-status"></p> 
+                    <input type="submit" name="add_post" value="Submit" />
                 </form>            
             </div>
-        </div>   
-        <template id = "search_user_temp">
-            <div id="user-box">            
-                <div class="add_post">
-                    <h2 class = "username">Username</h2>
-                    <input  class = "follow" style="width: 257px;" type="button" name="follow" value="Follow" />
-                </div>
-            </div>         
-        </template>
-        <div id = "cont"></div> 
+        </div>       
     </main>
+  
         <!-- footer -->
         <footer>
             <div class="footer layout_padding">
@@ -101,6 +99,6 @@
             </div>
         </footer>
         <!-- end footer -->
-        <script src="../js/search_user.js"></script>     
+        <script src="../js/update_post.js"></script>     
     </body>
 </html>

@@ -29,7 +29,7 @@
     </head>
     <!-- body -->
     <body>
-        <main class="main-layout">
+        <main class="main-layout" id = "cont">
             <!-- loader  -->
             <!-- <div class="loader_bg">
                 <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
@@ -71,30 +71,33 @@
                 <!-- end header inner -->
             </header>
             <!-- end header -->
-        </main>
         <div id="post-comment-box">            
             <div class="add_post">
-                <h2>Username</h2>
-                <p>text</p>
+                <h2 id = "username_post">Username</h2>
+                <p id = "text_post">text</p>
             </div>
         </div>      
         <div id="add-comment-box">            
             <div class="add_post">
-                <form id="update_profile">
+                <form id="add_comment">
                     <h2>Add New Comment</h2>
-                    <input type="text" id="add_post_input" name="Message" placeholder="Message" />
+                    <input type="text" id="add_post_input" name="text" placeholder="Text" />
+                    <p id = "add-comment-status"></p>
                     <input type="submit" name="add_Comment" value="Submit" />
                 </form>            
             </div>
         </div>      
         <h1 style="text-align: center;margin-bottom: -50px;color: white;"><b> All Comments </b></h1>
-        <div id="post-comment-box">            
-            <div class="add_post">
-                <h2>Username</h2>
-                <p>text</p>
-            </div>
-        </div>      
-        </div>      
+        <template id = "comment_temp">
+            <div id="post-comment-box">            
+                <div class="add_post">
+                    <h2 class = "comment_username">Username</h2>
+                    <p class = "comment_text">text</p>
+                </div>
+            </div> 
+        </template>
+        </main>
+  
         <!-- footer -->
         <footer>
             <div class="footer layout_padding">
@@ -111,6 +114,6 @@
             </div>
         </footer>
         <!-- end footer -->
-        <script src="../js/my_posts.js"></script>     
+        <script src="../js/comment.js"></script>     
     </body>
 </html>
