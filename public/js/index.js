@@ -31,7 +31,7 @@ formSendEmail.onsubmit = async e => {
        console.log(res.error); 
        return;
     };
-    console.log("ok");
+    console.log(res);
 }
 
 
