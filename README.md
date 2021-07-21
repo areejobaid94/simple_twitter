@@ -9,8 +9,8 @@ Simple Twitter
 - A user can interact with a post by commenting, like or dislike.
 - A user can find top 10 trending #tags in the last 7 days.
 
-### The Live Website of this repo: [Link](https://simple-twitter-new.herokuapp.com/index.htm).
+### The Live Website: [Link](https://simple-twitter-new.herokuapp.com/index.htm).
 
 ### ER diagram for the SQL database: [Link](https://drive.google.com/file/d/15QUnAfx0mrfnMS4rTLMrSxJQL_dAvYoV/view?usp=sharing).
 
-### Github Repo: [Link](https://github.com/areejobaid94/simple_twitter).
+### Github repo link: [Link](https://github.com/areejobaid94/simple_twitter).
