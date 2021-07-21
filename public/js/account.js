@@ -1,11 +1,11 @@
 "use strict"
-let api_url = 'https://simple-twitter-new.herokuap/api';
+let api_url = 'https://simple-twitter-new.herokuapp.com/api';
 const formUpdate = document.getElementById("update_profile");
 let pStatus = document.getElementById("update-status");
 let aPStatus = document.getElementById("add-post-status");
 const formAddPast = document.getElementById("add_post");
-let pageUrl = "https://simple-twitter-new.herokuap/html/my_posts.html";
-let pageUrlHome = "https://simple-twitter-new.herokuap/";
+let pageUrl = "https://simple-twitter-new.herokuapp.com/html/my_posts.html";
+let pageUrlHome = "https://simple-twitter-new.herokuapp.com/";
 
 window.onload = async function(){
   let token = localStorage.getItem("token");

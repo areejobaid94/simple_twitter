@@ -1,7 +1,7 @@
 "use strict"
 let formSendEmail = document.getElementById("send_email_form");
-let api_url = 'https://simple-twitter-new.herokuap/api';
-let pageUrlHome = "https://simple-twitter-new.herokuap/";
+let api_url = 'https://simple-twitter-new.herokuapp.com/api';
+let pageUrlHome = "https://simple-twitter-new.herokuapp.com/";
 
 window.onload = async function(){
     let token = localStorage.getItem("token");
