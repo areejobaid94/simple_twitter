@@ -21,7 +21,8 @@ CREATE TABLE tags(
 CREATE TABLE tags_posts(
   id SERIAL PRIMARY KEY,
   post_id integer not null references posts(id),
-  tag_id integer not null references tags(id)
+  tag_id integer not null references tags(id),
+  posting_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 
@@ -29,7 +30,7 @@ CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   text TEXT NOT NULL,
   user_id integer not null references users(id),
-  post_id integer not null references posts(id)
+  post_id integer not null references posts(id),
 );
 
 
