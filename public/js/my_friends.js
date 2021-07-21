@@ -3,25 +3,27 @@ let api_url = '/api';
 let pageUrl = "http://localhost:4000/html/search_user.html";
 var userTemp =document.getElementById("user_temp"); 
 var cont = document.querySelector("#cont");
+let pageUrlHome = "http://localhost:4000/";
 
 window.onload = async function(){
   let token = localStorage.getItem("token");
   if(!token){
-      document.getElementById("account").style.display = "none";
-      document.getElementById("my_posts").style.display = "none";
-      document.getElementById("my_friends_posts").style.display = "none";
-      document.getElementById("my_Friends").style.display = "none";
-      document.getElementById("search_user").style.display = "none";
-      document.getElementById("start").style.display = "block";
-      
+    document.getElementById("account").style.display = "none";
+    document.getElementById("my_posts").style.display = "none";
+    document.getElementById("my_friends_posts").style.display = "none";
+    document.getElementById("my_Friends").style.display = "none";
+    document.getElementById("search_user").style.display = "none";
+    document.getElementById("start").style.display = "inline-block";
+    document.getElementById("logout").style.display = "none";
   }else{
-      document.getElementById("account").style.display = "block";
-      document.getElementById("my_posts").style.display = "block";
-      document.getElementById("my_friends_posts").style.display = "block";
-      document.getElementById("my_Friends").style.display = "block";
-      document.getElementById("search_user").style.display = "block";
+      document.getElementById("account").style.display = "inline-block";
+      document.getElementById("my_posts").style.display = "inline-block";
+      document.getElementById("my_friends_posts").style.display = "inline-block";
+      document.getElementById("my_Friends").style.display = "inline-block";
+      document.getElementById("search_user").style.display = "inline-block";
       document.getElementById("start").style.display = "none";   
-   }
+      document.getElementById("logout").style.display = "inline-block";
+  }
 
     let users = await search();
     appendRes(users.friends);
@@ -80,4 +82,10 @@ function addContent(data){
     });
     username.innerText = data.username;
     cont.appendChild(clone);
+};
+
+
+function logout(){
+  localStorage.removeItem('token');
+  window.location.href = pageUrlHome;
 };

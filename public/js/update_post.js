@@ -4,17 +4,17 @@ var id = localStorage.getItem("post_id");
 const formUpdatePost = document.getElementById("update_post");
 let aPStatus = document.getElementById("update-post-status");
 let pageUrl = "http://localhost:4000/html/my_posts.html";
-
+let pageUrlHome = "http://localhost:4000/";
 window.onload = async function(){
   let token = localStorage.getItem("token");
   if(!token){
-      document.getElementById("account").style.display = "none";
-      document.getElementById("my_posts").style.display = "none";
-      document.getElementById("my_friends_posts").style.display = "none";
-      document.getElementById("my_Friends").style.display = "none";
-      document.getElementById("search_user").style.display = "none";
-      document.getElementById("start").style.display = "inline-block";
-      
+    document.getElementById("account").style.display = "none";
+    document.getElementById("my_posts").style.display = "none";
+    document.getElementById("my_friends_posts").style.display = "none";
+    document.getElementById("my_Friends").style.display = "none";
+    document.getElementById("search_user").style.display = "none";
+    document.getElementById("start").style.display = "inline-block";
+    document.getElementById("logout").style.display = "none";
   }else{
       document.getElementById("account").style.display = "inline-block";
       document.getElementById("my_posts").style.display = "inline-block";
@@ -22,6 +22,7 @@ window.onload = async function(){
       document.getElementById("my_Friends").style.display = "inline-block";
       document.getElementById("search_user").style.display = "inline-block";
       document.getElementById("start").style.display = "none";   
+      document.getElementById("logout").style.display = "inline-block";
   }
 
     let post = await feshPost();
@@ -63,3 +64,8 @@ async function updatePost(data) {
       body: JSON.stringify(data)
     });
 }
+
+function logout(){
+  localStorage.removeItem('token');
+  window.location.href = pageUrlHome;
+};

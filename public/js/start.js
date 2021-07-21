@@ -9,6 +9,28 @@ let pageUrl = "http://localhost:4000/html/account.html";
 //let api_url = 'https://jwt-pg-morganpage-tech.herokuapp.com/api';
 let api_url = '/api';
 
+
+window.onload = async function(){
+  let token = localStorage.getItem("token");
+  if(!token){
+    document.getElementById("account").style.display = "none";
+    document.getElementById("my_posts").style.display = "none";
+    document.getElementById("my_friends_posts").style.display = "none";
+    document.getElementById("my_Friends").style.display = "none";
+    document.getElementById("search_user").style.display = "none";
+    document.getElementById("start").style.display = "inline-block";
+    document.getElementById("logout").style.display = "none";
+  }else{
+      document.getElementById("account").style.display = "inline-block";
+      document.getElementById("my_posts").style.display = "inline-block";
+      document.getElementById("my_friends_posts").style.display = "inline-block";
+      document.getElementById("my_Friends").style.display = "inline-block";
+      document.getElementById("search_user").style.display = "inline-block";
+      document.getElementById("start").style.display = "none";   
+      document.getElementById("logout").style.display = "inline-block";
+  }
+};
+
 formLogin.onsubmit = async e => {
     e.preventDefault();
     console.log(formLogin.email.value);
@@ -66,3 +88,8 @@ async function SignUp(data) {
   });
   return await res.json();
 }
+
+function logout(){
+  localStorage.removeItem('token');
+  window.location.href = pageUrlHome;
+};

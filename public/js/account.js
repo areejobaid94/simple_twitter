@@ -16,6 +16,7 @@ window.onload = async function(){
       document.getElementById("my_Friends").style.display = "none";
       document.getElementById("search_user").style.display = "none";
       document.getElementById("start").style.display = "inline-block";
+      document.getElementById("logout").style.display = "none";
       
   }else{
       document.getElementById("account").style.display = "inline-block";
@@ -24,6 +25,7 @@ window.onload = async function(){
       document.getElementById("my_Friends").style.display = "inline-block";
       document.getElementById("search_user").style.display = "inline-block";
       document.getElementById("start").style.display = "none";   
+      document.getElementById("logout").style.display = "inline-block";
   }
 
     const user = await fetchUserData();

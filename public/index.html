@@ -53,13 +53,14 @@
                                     <ul class="menu-area-main">
                                         <li class="active"><a href="index.html">Home</a></li>
                                         <li id = "start"><a href="html/start.html">Start</a></li>
-                                        <li><a id = "account" href="html/account.html">My Account</a></li>
-                                        <li><a id = "my_posts" href="html/my_posts.html">My Posts</a></li>
-                                        <li> <a id = "my_friends_posts" href="html/my_friends_posts.html">My Friends Posts</a></li>
-                                        <li><a id = "my_Friends" href="html/my_Friends.html">My Friends</a></li>
-                                        <li> <a id = "search_user" href="html/search_user.html">Search For User</a></li>
+                                        <li id = "account"><a href="html/account.html">My Account</a></li>
+                                        <li id = "my_posts"><a  href="html/my_posts.html">My Posts</a></li>
+                                        <li id = "my_friends_posts" > <a href="html/my_friends_posts.html">My Friends Posts</a></li>
+                                        <li id = "my_Friends" ><a href="html/my_Friends.html">My Friends</a></li>
+                                        <li id = "search_user"> <a  href="html/search_user.html">Search For User</a></li>
                                         <li><a href="html/trending.html">Trending</a></li>
                                         <li><a href="index.html#contact">Contact Us</a></li>
+                                        <li id = "logout"><button onclick="logout()"> Logout</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -125,19 +126,19 @@
                                 <h2>Send a <strong class="theme_blue">direct e-mail to the owner</strong></h2>
                             </div>
                             <div class="full margin_top_20">
-                                <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                       <input class="form-control" placeholder="Your Name" type="text" required="">
+                                <form id = "send_email_form">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                        <input class="form-control" name = "name" placeholder="Your Name" type="text" required="">
+                                        </div>
+                                        <div class="col-sm-12">
+                                        <input class="form-control" name = "subject" placeholder="Subject" type="text" required="">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control textarea" name = "message" placeholder="Message" required=""></textarea>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                       <input class="form-control" placeholder="Subject" type="text" required="">
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <textarea class="form-control textarea" placeholder="Message" required=""></textarea>
-                                    </div>
-                                </div>
-                                <button class="main_bt">Send</button>
+                                    <input type="submit" class="main_bt" value = "Send" >
                             </form>
                             </div>   
                             
