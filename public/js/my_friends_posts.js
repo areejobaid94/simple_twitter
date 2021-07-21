@@ -29,6 +29,8 @@ window.onload = async function(){
       document.getElementById("logout").style.display = "inline-block";
   }
 
+  const user = await fetchUserData(token);
+
     posts = await feshFriendsPosts();
     var postTemp =document.getElementById("post_temp"); 
     console.log(posts);
@@ -44,9 +46,9 @@ window.onload = async function(){
       let countLike = 0; 
       let countDisLike = 0; 
       for(let j = 0; j <  posts.output[posts.output.posts[i].id][1].length; j++){
-        if( posts.output[posts.output.posts[i].id][1][j].user_id == posts.output.posts[0].user_id &&  posts.output[posts.output.posts[i].id][1][j].value == 1){
+        if( posts.output[posts.output.posts[i].id][1][j].user_id == user.id &&  posts.output[posts.output.posts[i].id][1][j].value == 1){
           like.style.backgroundColor = "red";
-        }else if ( posts.output[posts.output.posts[i].id][1][j].user_id == posts.output.posts[0].user_id){
+        }else if ( posts.output[posts.output.posts[i].id][1][j].user_id == user.id){
           disLike.style.backgroundColor = "red";
         }
 
@@ -211,3 +213,12 @@ function logout(){
   localStorage.removeItem('token');
   window.location.href = pageUrlHome;
 };
+
+async function fetchUserData(token) {
+  const res = await fetch(`${api_url}/users/profile`, {
+    headers: {
+      'Authorization': 'Bearer ' + token,
+    }
+  });
+  return await res.json();
+}
