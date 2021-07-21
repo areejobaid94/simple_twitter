@@ -1,5 +1,7 @@
 "use strict"
 let api_url = 'https://simple-twitter-new.herokuapp.com/api';
+var tagTemp =document.getElementById("tag_temp"); 
+var cont = document.querySelector("#cont");
 
 window.onload = async function(){
     let token = localStorage.getItem("token");
@@ -22,6 +24,8 @@ window.onload = async function(){
     }
   
     let tags = await tendingTags();
+    if(tags.error)return error;
+    appendRes(tags.tags)
     console.log(tags);
 }
 
@@ -35,4 +39,21 @@ async function tendingTags() {
 function logout(){
     localStorage.removeItem('token');
     window.location.href = pageUrlHome;
+};
+
+
+function appendRes(data){
+    cont.innerHTML = "";
+    for(let i = data.length -1; i >= 0; i--){
+      addContent(data[i]);
+    };
+}
+
+function addContent(data){
+    let clone = tagTemp.content.cloneNode(true);
+    let tag = clone.querySelector(".tag");
+    let numPosts = clone.querySelector(".num_of_posts");
+    tag.innerText = data.tag_value;
+    numPosts.innerText =`Number of posts for this tag: ${data.count}`;
+    cont.appendChild(clone);
 };
