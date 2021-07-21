@@ -22,6 +22,7 @@ window.onload = async function(){
     }
   
     let tags = await tendingTags();
+    console.log(tags);
 }
 
 async function tendingTags() {
