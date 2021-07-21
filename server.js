@@ -7,6 +7,7 @@ import commentsRouter from './router/comments_routes.js';
 import likesRouter from './router/likes_routes.js';
 import followRoutes from './router/follow_routes.js';
 import sendEmail from './router/send-email-route.js';
+import trendingRouter from './router/trending-routes.js';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { dirname,join } from 'path';
@@ -32,7 +33,7 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/likes', likesRouter);
 app.use('/api/follow', followRoutes);
 app.use('/api/send_email', sendEmail);
-
+app.use('/api/trending', trendingRouter)
 
 app.listen(PORT, ()=> {
   console.log(`Starting Server on port:${PORT}`);

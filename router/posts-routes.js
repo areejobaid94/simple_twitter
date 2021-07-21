@@ -49,16 +49,18 @@ router.post('/', authentication, async (req, res) => {
         , [req.user.id, req.body.text]);
       for(let i = 1; i < tags.length; i++){
         var tagValue = tags[i].split(" ")[0];
-        console.log(tagValue);
-        var tagValueFromDb = await db.query(
-          'Select * from tags where tag_value = $1'
-          , [tagValue]);
-        if(tagValueFromDb.rows.length == 0){
-          tagValueFromDb =  await db.query(
-          'INSERT INTO tags (tag_value) VALUES ($1) RETURNING *',[tagValue]);
+        if(tagValue != " "){
+          var tagValueFromDb = await db.query(
+            'Select * from tags where tag_value = $1'
+            , [tagValue]);
+          if(tagValueFromDb.rows.length == 0){
+            tagValueFromDb =  await db.query(
+            'INSERT INTO tags (tag_value) VALUES ($1) RETURNING *',[tagValue]);
+          }
+          await db.query(
+            'INSERT INTO tags_posts (post_id, tag_id) VALUES ($1, $2) RETURNING *',[post.rows[0].id, tagValueFromDb.rows[0].id]);
         }
-        await db.query(
-          'INSERT INTO tags_posts (post_id, tag_id) VALUES ($1, $2) RETURNING *',[post.rows[0].id, tagValueFromDb.rows[0].id]);
+
       }
       res.status(201).json(post.rows[0]);
     } catch (error) {
