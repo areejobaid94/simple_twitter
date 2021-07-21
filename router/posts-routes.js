@@ -49,7 +49,7 @@ router.post('/', authentication, async (req, res) => {
         , [req.user.id, req.body.text]);
       for(let i = 1; i < tags.length; i++){
         var tagValue = tags[i].split(" ")[0];
-        if(tagValue != " "){
+        if(tagValue != ""){
           var tagValueFromDb = await db.query(
             'Select * from tags where tag_value = $1'
             , [tagValue]);
@@ -60,7 +60,6 @@ router.post('/', authentication, async (req, res) => {
           await db.query(
             'INSERT INTO tags_posts (post_id, tag_id) VALUES ($1, $2) RETURNING *',[post.rows[0].id, tagValueFromDb.rows[0].id]);
         }
-
       }
       res.status(201).json(post.rows[0]);
     } catch (error) {
