@@ -5,6 +5,7 @@ let pStatus = document.getElementById("update-status");
 let aPStatus = document.getElementById("add-post-status");
 const formAddPast = document.getElementById("add_post");
 let pageUrl = "http://localhost:4000/html/my_posts.html";
+let pageUrlHome = "http://localhost:4000/";
 
 window.onload = async function(){
   let token = localStorage.getItem("token");
@@ -14,16 +15,16 @@ window.onload = async function(){
       document.getElementById("my_friends_posts").style.display = "none";
       document.getElementById("my_Friends").style.display = "none";
       document.getElementById("search_user").style.display = "none";
-      document.getElementById("start").style.display = "block";
+      document.getElementById("start").style.display = "inline-block";
       
   }else{
-      document.getElementById("account").style.display = "block";
-      document.getElementById("my_posts").style.display = "block";
-      document.getElementById("my_friends_posts").style.display = "block";
-      document.getElementById("my_Friends").style.display = "block";
-      document.getElementById("search_user").style.display = "block";
+      document.getElementById("account").style.display = "inline-block";
+      document.getElementById("my_posts").style.display = "inline-block";
+      document.getElementById("my_friends_posts").style.display = "inline-block";
+      document.getElementById("my_Friends").style.display = "inline-block";
+      document.getElementById("search_user").style.display = "inline-block";
       document.getElementById("start").style.display = "none";   
-   }
+  }
 
     const user = await fetchUserData();
     console.log(user);    
@@ -31,6 +32,11 @@ window.onload = async function(){
     document.getElementById("email").innerHTML = user.email;
     document.getElementById("username_update").value = user.username;
     document.getElementById("email_update").value = user.email;
+};
+
+function logout(){
+  localStorage.removeItem('token');
+  window.location.href = pageUrlHome;
 };
 
 
@@ -97,3 +103,5 @@ async function addPost(data) {
     body: JSON.stringify(data)
   });
 }
+
+

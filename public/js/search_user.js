@@ -1,6 +1,6 @@
 "use strict"
 let api_url = '/api';
-const formSearchUser = document.getElementById("search_user");
+const formSearchUser = document.getElementById("search_user_form");
 let pageUrl = "http://localhost:4000/html/search_user.html";
 var searchTemp =document.getElementById("search_user_temp"); 
 var cont = document.querySelector("#cont");
@@ -24,16 +24,16 @@ window.onload = async function(){
       document.getElementById("start").style.display = "none";   
    }
 
-}
+};
 
 formSearchUser.onsubmit = async e => {
     e.preventDefault();
     let res = await search(formSearchUser.username.value);
-    console.log(res);
     if(res.error){
       aPStatus.innerText = "Errrrrrroooooorrrrrrrrrrr";
       return;
     };
+    console.log(res);
     appendRes(res);
 };  
 
