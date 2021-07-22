@@ -1,5 +1,5 @@
 "use strict"
-let api_url = 'https://simple-twitter-new.herokuap/api';
+let api_url = 'https://simple-twitter-new.herokuapp.com/api';
 var id = localStorage.getItem("post_id");
 const formUpdatePost = document.getElementById("update_post");
 let aPStatus = document.getElementById("update-post-status");
