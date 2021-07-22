@@ -97,10 +97,10 @@ router.get('/:id', async (req, res) => {
   try {
     console.log(req.params.id);
     const newPost = await db.query(
-      'SELECT posts.id as id, posts.text as text, users.username as username, posts.user_id as user_id join users on users.id = posts.user_id WHERE posts.id=$1;'
+      'SELECT posts.id as id, posts.text as text, users.username as username, posts.user_id as user_id  from posts inner join users on users.id = posts.user_id WHERE posts.id=$1;'
       , [req.params.id]);
     const comments = await db.query(
-      'SELECT text , users.username as username, comments.user_id as user_id join users on users.id = comments.user_id from  comments WHERE comments.post_id=$1;'
+      'SELECT text , users.username as username, comments.user_id as user_id from comments inner join users on users.id = comments.user_id WHERE comments.post_id=$1;'
       , [req.params.id]);   
     res.json({post:newPost.rows[0], comments: comments.rows});
   } catch (error) {
