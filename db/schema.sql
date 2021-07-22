@@ -30,7 +30,7 @@ CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
   text TEXT NOT NULL,
   user_id integer not null references users(id),
-  post_id integer not null references posts(id),
+  post_id integer not null references posts(id)
 );
 
 

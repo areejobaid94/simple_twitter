@@ -28,8 +28,8 @@ window.onload = async function(){
 
     let post = await feshPost();
     if(post.error)console.log(post.error);
-    postData(post.post[0])
-    allComments(post.post)
+    postData(post.post)
+    allComments(post.comments)
 }
 
 function postData(data){
@@ -45,7 +45,7 @@ function allComments(comments){
     let username = clone.querySelector(".comment_username");
     username.textContent = comments[i].username;
     let text = clone.querySelector(".comment_text");
-    text.textContent = comments[i].comment_text;
+    text.textContent = comments[i].text;
     cont.appendChild(clone);
   }
 }
