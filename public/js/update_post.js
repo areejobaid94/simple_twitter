@@ -3,7 +3,7 @@ let api_url = 'https://simple-twitter-new.herokuapp.com/api';
 var id = localStorage.getItem("post_id");
 const formUpdatePost = document.getElementById("update_post");
 let aPStatus = document.getElementById("update-post-status");
-let pageUrl = "https://simple-twitter-new.herokuap.com/html/my_posts.html";
+let pageUrl = "https://simple-twitter-new.herokuapp.com/html/my_posts.html";
 let pageUrlHome = "https://simple-twitter-new.herokuapp.com/";
 
 window.onload = async function(){
