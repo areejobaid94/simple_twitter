@@ -27,7 +27,7 @@ window.onload = async function(){
   }
 
     let post = await feshPost();
-    if(post.error)console.log(post.error);
+    if(post.error)console.log(post);
     postData(post.post.text);
 };
 
